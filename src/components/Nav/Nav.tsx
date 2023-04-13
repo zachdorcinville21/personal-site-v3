@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { animateScroll as scroll } from "react-scroll";
 import Link from "next/link";
 import Burger from "../Burger/Burger";
-import Menu from "../Menu/Menu";
+import Menu from "../Menu";
 import styles from './Nav.module.sass';
 
 const Nav = () => {
@@ -41,7 +41,7 @@ const Nav = () => {
       ) : (
         <div>
           <Burger open={open} setOpen={setOpen} />
-          <Menu open={open} />
+          <Menu open={open} setOpen={setOpen} />
         </div>
       )}
     </NavContainer>

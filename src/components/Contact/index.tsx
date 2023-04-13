@@ -8,7 +8,7 @@ import gsap from 'gsap';
 import Check from '/public/assets/icons/contact/check.svg';
 import EmailIcon from '/public/assets/icons/contact/email.svg';
 
-init('user_4gGAJTUE5UFmqkyzrNtBd');
+init(process.env.NEXT_PUBLIC_EMAILJS_ID ?? '');
 
 const Text = styled.div`
     color: #fffafa;
@@ -89,7 +89,7 @@ const Contact = () => {
             'website-email-form',
             'template_y4m89vi',
             templateParams,
-            'user_4gGAJTUE5UFmqkyzrNtBd'
+            process.env.NEXT_PUBLIC_EMAILJS_ID ?? ''
         );
         resetForm();
         setState({ ...state, formSubmitted: true });

@@ -1,14 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-// import Card from "@material-ui/core/Card";
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import styled, { useTheme } from 'styled-components';
 import { Card, Button } from '@mantine/core';
-import Image from 'next/image';
 import { techLists } from './techLists';
+import { useViewportSize } from '@mantine/hooks';
 
 const styles = makeStyles({
     regText: {
@@ -45,31 +40,10 @@ const styles = makeStyles({
     },
 });
 
-const Title = styled.h5`
-    font-size: 24px;
-    color: #fff;
-    margin: 0;
-`;
-
-const Desc = styled.div`
-    font-size: 16px;
-    color: #fff;
-    margin: 0;
-`;
-
-const ViewCode = styled.a`
-    color: #fff;
-    margin: 0;
-    font-size: 10px;
-    text-decoration: none;
-    text-transform: uppercase;
-`;
-
 interface ProjectProps {
     imgLink: string;
     title: string;
     description: JSX.Element | string;
-    githubLink: string;
     projLink: string;
 }
 
@@ -77,21 +51,19 @@ const Project = ({
     imgLink,
     title,
     description,
-    githubLink,
     projLink,
 }: ProjectProps) => {
     const styleProps = useRef<{ width: number } | null>(null);
 
     const theme = useTheme();
+    const { width } = useViewportSize();
 
     useEffect(() => {
         styleProps.current = { width: window.screen.width <= 480 ? 350 : 400 };
     }, []);
 
-    const classes = styles(styleProps.current ?? { width: 0 });
-
     return (
-        <Card style={{ backgroundColor: '#000000', width: 400 }}>
+        <Card style={{ backgroundColor: '#000000', width: width >= 425 ? 400 : 380 }}>
             <Card.Section>
                 <img
                     src={imgLink}

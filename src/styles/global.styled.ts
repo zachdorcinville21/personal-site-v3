@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         background-color: #0F0F14;
+        margin: 0;
     }
 
     p, h1, h2, h3, h4, h5, h6, div {

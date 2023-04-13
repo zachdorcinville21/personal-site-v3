@@ -6,9 +6,11 @@ import DeskWorkIcon from '/public/assets/icons/welcome/desk-work.svg';
 import { Col } from '../common/Col';
 import { useAnimation } from '@/util/hooks/useAnimation';
 import SplitType from 'split-type';
+import { useViewportSize } from '@mantine/hooks';
 
 const Welcome = () => {
     const { fadeIn, reveal } = useAnimation();
+    const { width } = useViewportSize();
 
     useEffect(() => {
         gsap.to('#welcome-copy', { autoAlpha: 1 });
@@ -20,7 +22,7 @@ const Welcome = () => {
 
     return (
         <div className={styles['welcome-container']}>
-            <DeskWorkIcon width={500} height={500} />
+            {width >= 1190 && <DeskWorkIcon width={500} height={500} />}
             <WelcomeCopy id="welcome-copy">
                 <WelcomeHeader id="welcome-header">
                     Welcome, I'm Zachary
@@ -38,6 +40,14 @@ const WelcomeHeader = styled.h1`
     font-size: 3.875rem;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     margin: 0;
+
+    @media (max-width: 768px) {
+        font-size: 2.875rem;
+    }
+
+    @media (max-width: 576px) {
+        font-size: 1.875rem;
+    }
 `;
 
 const WelcomeSubHeader = styled.h3`
@@ -45,6 +55,14 @@ const WelcomeSubHeader = styled.h3`
     font-size: 2rem;
     opacity: 0;
     margin: 0;
+
+    @media (max-width: 768px) {
+        font-size: 1.5rem;
+    }
+
+    @media (max-width: 576px) {
+        font-size: 1.2rem;
+    }
 `;
 
 const WelcomeCopy = styled(Col)`
