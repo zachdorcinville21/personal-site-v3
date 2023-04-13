@@ -29,6 +29,7 @@ const nextConfig = {
   },
   reactStrictMode: true,
   transpilePackages: ['gsap'],
+  output: 'standalone',
   images: {
     remotePatterns: [
       {
