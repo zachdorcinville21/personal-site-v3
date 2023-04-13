@@ -1,0 +1,10 @@
+version: '3'
+services:
+  nextjs: 
+    build: ./
+    image: personal-site-v3
+  nginx: 
+    build: ./nginx
+    image: nginx-image
+    ports:
+      - 80:80
