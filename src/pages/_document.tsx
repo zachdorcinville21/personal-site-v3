@@ -42,6 +42,10 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Titillium%20Web"
           />
+          <link
+            rel="icon"
+            href="/letter-z.ico"
+          />
         </Head>
         <body>
           <Main />
