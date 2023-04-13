@@ -1,0 +1,30 @@
+.projects-container
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+
+.project-cards
+    margin-top: 80px
+    display: flex
+    flex-direction: row
+    gap: 50px
+
+.project
+    opacity: 0
+
+.project-header
+    display: flex
+    flex-direction: column
+    align-items: center
+
+@media only screen and (max-width: 1360px)
+    .project-cards
+        flex-direction: column
+
+    .project
+        margin-bottom: 10px
+
+@media (max-width: 520px)
+    .project
+        margin-bottom: 25px

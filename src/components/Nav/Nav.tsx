@@ -32,12 +32,6 @@ const Nav = () => {
             <NavItem as="p">Home</NavItem>
           </Link>
           <Link
-            href="/experience"
-            style={{ textDecoration: "none", color: "#fffafa" }}
-          >
-            <NavItem as="p">Experience</NavItem>
-          </Link>
-          <Link
             href="/contact"
             style={{ textDecoration: "none", color: "#fffafa" }}
           >

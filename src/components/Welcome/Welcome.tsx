@@ -1,49 +1,55 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import gsap from 'gsap';
 import styled from 'styled-components';
-import { animateScroll as scroll } from 'react-scroll';
 import styles from './Welcome.module.sass';
-import DoubleDown from '/public/assets/icons/welcome/two-down.svg';
-
-const Text = styled.div`
-    font-weight: normal;
-    color: #FFFAFA;
-`;
-
-const fadeInTitle = () => {
-    gsap.to('.welcome-txt-animate', { autoAlpha: 1, duration: 2, });
-}
-
-const slideProfession = () => {
-    gsap.to('.profession-animate', { autoAlpha: 1, x: 50, duration: 1, });
-}
+import DeskWorkIcon from '/public/assets/icons/welcome/desk-work.svg';
+import { Col } from '../common/Col';
+import { useAnimation } from '@/util/hooks/useAnimation';
+import SplitType from 'split-type';
 
 const Welcome = () => {
-    const [projectsY, setProjectsY] = useState(0);
+    const { fadeIn, reveal } = useAnimation();
 
     useEffect(() => {
-        console.log(document.getElementById('welcome-txt'));
-        gsap.delayedCall(0.5, fadeInTitle);
-        gsap.delayedCall(1.5, slideProfession);
-        setProjectsY(
-            document.querySelector('.projects-container')?.getBoundingClientRect()?.y ?? 0
-        );
+        gsap.to('#welcome-copy', { autoAlpha: 1 });
+        const splitText = new SplitType('#welcome-header', { types: 'chars' });
+        const chars = splitText.chars;
+        reveal(chars!);
+        gsap.delayedCall(1.8, () => fadeIn('#welcome-subheader'));
     }, []);
 
     return (
         <div className={styles['welcome-container']}>
-            <div className={styles.greeting}>
-                <Text id={styles['welcome-txt']} className='welcome-txt-animate' as="h1">Welcome, I'm Zachary</Text>
-                <Text id={styles.profession} className='profession-animate' as="p">Software Engineer | Web Developer</Text>
-            </div>
-            <div className={styles['see-more']} onClick={() => scroll.scrollTo(projectsY ?? 900)}>
-                <Text as="p">See more</Text>
-                <DoubleDown width={100} height={100} />
-            </div>
+            <DeskWorkIcon width={500} height={500} />
+            <WelcomeCopy id="welcome-copy">
+                <WelcomeHeader id="welcome-header">
+                    Welcome, I'm Zachary
+                </WelcomeHeader>
+                <WelcomeSubHeader id="welcome-subheader">
+                    Web and mobile developer
+                </WelcomeSubHeader>
+            </WelcomeCopy>
         </div>
     );
-}
+};
 
+const WelcomeHeader = styled.h1`
+    font-weight: 400;
+    font-size: 3.875rem;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    margin: 0;
+`;
 
+const WelcomeSubHeader = styled.h3`
+    font-weight: 400;
+    font-size: 2rem;
+    opacity: 0;
+    margin: 0;
+`;
+
+const WelcomeCopy = styled(Col)`
+    gap: 2rem;
+    opacity: 0; /* to prevent flash of final state before animation */
+`;
 
 export default Welcome;

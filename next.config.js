@@ -28,6 +28,16 @@ const nextConfig = {
     return config;
   },
   reactStrictMode: true,
+  transpilePackages: ['gsap'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'sticnuru.sirv.com',
+        port: '',
+      }
+    ]
+  }
 }
 
 module.exports = nextConfig
