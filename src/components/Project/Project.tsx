@@ -47,12 +47,7 @@ interface ProjectProps {
     projLink: string;
 }
 
-const Project = ({
-    imgLink,
-    title,
-    description,
-    projLink,
-}: ProjectProps) => {
+const Project = ({ imgLink, title, description, projLink }: ProjectProps) => {
     const styleProps = useRef<{ width: number } | null>(null);
 
     const theme = useTheme();
@@ -63,7 +58,13 @@ const Project = ({
     }, []);
 
     return (
-        <Card style={{ backgroundColor: '#000000', width: width >= 425 ? 400 : 380 }}>
+        <Card
+            style={{
+                backgroundColor: '#000000',
+                width: width >= 425 ? 400 : 350,
+                minHeight: '500px',
+            }}
+        >
             <Card.Section>
                 <img
                     src={imgLink}
@@ -96,7 +97,16 @@ const Project = ({
                 p="md"
                 style={{ display: 'flex', justifyContent: 'center' }}
             >
-                <Button component="a" href={projLink} target="_blank" variant='gradient' fullWidth>
+                <Button
+                    component="a"
+                    href={projLink}
+                    target="_blank"
+                    variant="gradient"
+                    fullWidth
+                    pos="absolute"
+                    bottom={14}
+                    w="90%"
+                >
                     View
                 </Button>
             </Card.Section>

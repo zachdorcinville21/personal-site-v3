@@ -63,8 +63,6 @@ const Projects = () => {
                                             '_blank'
                                         )
                                     }
-                                    //href='https://apps.apple.com/us/app/gotham-oracle/id1617227132'
-                                    //target='_blank'
                                     rel="no-referrer"
                                 >
                                     App Store.
@@ -76,10 +74,10 @@ const Projects = () => {
                 </div>
                 <div className={`${styles.project} proj-animate`}>
                     <Project
-                        imgLink="https://sticnuru.sirv.com/Website%20images/guerrillabuzz-blockchain-pr-agency-URTdM8lVSDg-unsplash.jpg"
-                        title="$SOLhub"
-                        description="A personal Solana dashboard where you can message other Phantom wallets and view your NFT collection."
-                        projLink="https://solhub.app"
+                        imgLink="https://sticnuru.sirv.com/Website%20images/fluid.jpg"
+                        title="Fluidity"
+                        description="A tool that makes your HTML and CSS respsonsive for mobile, tablet, and desktop."
+                        projLink="https://www.fluidity.dev/"
                     />
                 </div>
             </div>
