@@ -62,7 +62,7 @@ const Project = ({ imgLink, title, description, projLink }: ProjectProps) => {
             style={{
                 backgroundColor: '#000000',
                 width: width >= 425 ? 400 : 350,
-                minHeight: '500px',
+                minHeight: '520px',
             }}
         >
             <Card.Section>
@@ -110,22 +110,6 @@ const Project = ({ imgLink, title, description, projLink }: ProjectProps) => {
                     View
                 </Button>
             </Card.Section>
-            {/* <CardActionArea href={projLink} target="_blank">
-                <CardMedia
-                    className={classes.media}
-                    image={imgLink}
-                    title={title}
-                />
-                <CardContent className={classes.cardContent}>
-                    <Title>{title}</Title>
-                    <Desc>{description}</Desc>
-                </CardContent>
-            </CardActionArea>
-            <CardActions>
-                <ViewCode href={githubLink} target="_blank">
-                    View code
-                </ViewCode>
-            </CardActions> */}
         </Card>
     );
 };

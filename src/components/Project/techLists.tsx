@@ -4,6 +4,7 @@ import Mongo from '/public/assets/icons/projects/mongodb.svg';
 import ReactIcon from '/public/assets/icons/projects/react.svg';
 import TS from '/public/assets/icons/projects/ts.svg';
 import NextJs from '/public/assets/icons/projects/nextjs.svg';
+import SocketIO from '/public/assets/icons/projects/socketio.svg';
 
 interface TechItem {
     icon: React.ReactNode;
@@ -22,5 +23,13 @@ export const techLists: Record<string, TechItem[]> = {
         { icon: <ReactIcon />, name: 'React' },
         { icon: <TS />, name: 'TypeScript' },
         { icon: <NextJs width={20} height={20} />, name: 'Next.js' },
+    ],
+    $SOLhub: [
+        { icon: <ReactIcon />, name: 'React' },
+        { icon: <TS />, name: 'TypeScript' },
+        { icon: <NodeJs />, name: 'Node' },
+        { icon: <SocketIO width={20} height={20} />, name: 'Socket.IO' },
+        { icon: <Mongo />, name: 'MongoDB' },
+        { icon: <DigitalOcean />, name: 'Digital Ocean' },
     ],
 };

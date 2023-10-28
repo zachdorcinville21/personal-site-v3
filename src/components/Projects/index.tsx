@@ -80,6 +80,14 @@ const Projects = () => {
                         projLink="https://www.fluidity.dev/"
                     />
                 </div>
+                <div className={`${styles.project} proj-animate`}>
+                    <Project
+                        imgLink="https://sticnuru.sirv.com/Website%20images/guerrillabuzz-blockchain-pr-agency-URTdM8lVSDg-unsplash.jpg"
+                        title="$SOLhub"
+                        description="A dashboard where users can connect their Phantom Solana wallet to view their NFT collection, send SOL, and interact with other users through real-time messaging."
+                        projLink="https://www.solhub.app/"
+                    />
+                </div>
             </div>
         </div>
     );
