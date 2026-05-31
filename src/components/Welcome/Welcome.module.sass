@@ -1,43 +1,47 @@
 .welcome-container
     width: 100%
     min-height: 100vh
-    background-size: cover
+    background: transparent
     display: flex
-    flex-direction: row
     align-items: center
-    justify-content: space-around
-    padding: 0 2rem
-
-.greeting
-    text-align: center
-    display: flex
-    flex-direction: column
-    gap: 2rem
-
-.see-more
-    position: absolute
-    bottom: 40px
-    display: flex
-    flex-direction: column
     justify-content: center
-    align-items: center
-
-    &:hover
-        cursor: pointer
-
-#welcome-txt
-    opacity: 0
-    font-size: 48px
-
-#profession
+    padding: 5rem 2rem
     position: relative
-    right: 50px
-    opacity: 0
-    font-size: 24px
+    overflow: hidden
 
-@media (max-width: 480px)
-    #welcome-txt
-        font-size: 36px
+.welcome-shell
+    width: min(1220px, 100%)
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 2rem
+    padding: clamp(2rem, 4vw, 4rem)
 
-    #profession
-        font-size: 18px
+.intro-tag
+    margin: 0
+    font-size: 0.78rem
+    letter-spacing: 0.3em
+    font-weight: 600
+    color: rgba(151, 210, 255, 0.9)
+
+.icon-frame
+    height: 420px
+    width: 420px
+    display: flex
+    align-items: center
+    justify-content: center
+
+    :global(svg)
+        opacity: 0.92
+
+@media (max-width: 1190px)
+    .welcome-shell
+        max-width: 860px
+
+@media (max-width: 768px)
+    .welcome-container
+        padding: 4rem 1rem
+
+    .intro-tag
+        font-size: 0.7rem
+        letter-spacing: 0.22em

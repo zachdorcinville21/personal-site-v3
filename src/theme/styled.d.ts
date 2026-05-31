@@ -8,6 +8,13 @@ declare module 'styled-components' {
         pallete: {
             backgroundMain: string;
             dark3: string;
+            textPrimary: string;
+            projectsSurfaceStart: string;
+            projectsSurfaceEnd: string;
+            projectsAccentLink: string;
+            projectsAccentLinkHover: string;
+            projectsButtonFrom: string;
+            projectsButtonTo: string;
         };
     }
 }

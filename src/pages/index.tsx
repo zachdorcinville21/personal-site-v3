@@ -5,34 +5,21 @@ import React from "react";
 import styled from "styled-components";
 
 const Line = styled.hr`
-  overflow: visible;
-  height: 30px;
-  border-style: solid;
-  border-color: black;
-  border-width: 1px 0 0 0;
-  border-radius: 20px;
-  margin-top: 150px;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   width: 75%;
-
-  &:before {
-    display: block;
-    content: "";
-    height: 30px;
-    margin-top: -31px;
-    border-style: solid;
-    border-color: black;
-    border-width: 0 0 1px 0;
-    border-radius: 20px;
-  }
+  margin: 0 auto;
 `;
 
 const Main = () => {
   return (
     <MainContainer>
-      <Welcome />
-      <Projects />
-      <Line />
-      <Mentor />
+      <TopSections>
+        <Welcome />
+        <Projects />
+        <Line />
+        <Mentor />
+      </TopSections>
     </MainContainer>
   );
 };
@@ -40,6 +27,11 @@ const Main = () => {
 const MainContainer = styled.div`
   width: 100%;
   min-height: 100vh;
+`;
+
+const TopSections = styled.div`
+  width: 100%;
+  background: url('https://sticnuru.sirv.com/Website%20images/endless-constellation.svg') repeat, #080a10;
 `;
 
 export default Main;

@@ -4,93 +4,64 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 
 import Project from '../Project/Project';
 import ProjectsHeader from './ProjectsHeader';
-import styled from 'styled-components';
 import styles from './Projects.module.sass';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const showProjects = (selector: string) => {
-    ScrollTrigger.batch(selector, {
-        interval: 1,
-        onEnter: (batch) =>
-            gsap.to(batch, {
-                autoAlpha: 1,
-                stagger: { each: 0.3 },
-                scrollTrigger: { trigger: '#proj-cards' },
-                duration: 1,
-            }),
-    });
+  ScrollTrigger.batch(selector, {
+    interval: 0.3,
+    once: true,
+    onEnter: (batch) =>
+      gsap.fromTo(
+        batch,
+        { autoAlpha: 0, y: 20 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.inOut',
+        }
+      ),
+  });
 };
 
 const animateTitle = (selector: string) => {
-    gsap.to(selector, {
-        autoAlpha: 1,
-        scrollTrigger: { trigger: '#proj-container' },
-        duration: 1,
-    });
+  gsap.to(selector, {
+    autoAlpha: 1,
+    scrollTrigger: { trigger: '#proj-container' },
+    duration: 1,
+  });
 };
 
-const AppStoreLink = styled.div`
-    color: steelblue;
-    text-decoration: none;
-    &:hover {
-        cursor: pointer;
-    }
-`;
-
 const Projects = () => {
-    useEffect(() => {
-        animateTitle('#proj-title');
-        showProjects('.proj-animate');
-    }, []);
-
-    return (
-        <div className={styles['projects-container']} id="proj-container">
-            <ProjectsHeader />
-            <div className={styles['project-cards']} id="proj-cards">
-                <div className={`${styles.project} proj-animate`}>
-                    <Project
-                        imgLink="https://sticnuru.sirv.com/go-native-images/roberto-nickson-_em5tYXuOQc-unsplash.jpg"
-                        title="Gotham Oracle"
-                        description={
-                            <div>
-                                A digital guide for NYC experiences. Also
-                                available on the{' '}
-                                <AppStoreLink
-                                    onClick={() =>
-                                        window.open(
-                                            'https://apps.apple.com/us/app/gotham-oracle/id1617227132',
-                                            '_blank'
-                                        )
-                                    }
-                                    rel="no-referrer"
-                                >
-                                    App Store.
-                                </AppStoreLink>
-                            </div>
-                        }
-                        projLink="https://gothamoracle.com"
-                    />
-                </div>
-                <div className={`${styles.project} proj-animate`}>
-                    <Project
-                        imgLink="https://sticnuru.sirv.com/Website%20images/fluid.jpg"
-                        title="Fluidity"
-                        description="A tool that makes your HTML and CSS respsonsive for mobile, tablet, and desktop."
-                        projLink="https://www.fluidity.dev/"
-                    />
-                </div>
-                <div className={`${styles.project} proj-animate`}>
-                    <Project
-                        imgLink="https://sticnuru.sirv.com/Website%20images/guerrillabuzz-blockchain-pr-agency-URTdM8lVSDg-unsplash.jpg"
-                        title="$SOLhub"
-                        description="A dashboard where users can connect their Phantom Solana wallet to view their NFT collection, send SOL, and interact with other users through real-time messaging."
-                        projLink="https://www.solhub.app/"
-                    />
-                </div>
-            </div>
+  useEffect(() => {
+    animateTitle('#proj-title');
+    showProjects('.proj-animate');
+  }, []);
+  return (
+    <div className={styles['projects-container']} id="proj-container">
+      <ProjectsHeader />
+      <div className={styles['project-cards']} id="proj-cards">
+        <div className={`${styles.project} proj-animate`}>
+          <Project
+            imgLink="https://sticnuru.sirv.com/Website%20images/arnold-francisca-f77Bh3inUpE-unsplash.jpg"
+            title="ProFrontend"
+            description="A platform for engineers to practice React coding exercises directly in the browser."
+            projLink="https://profrontend.dev"
+          />
         </div>
-    );
+        <div className={`${styles.project} proj-animate`}>
+          <Project
+            imgLink="https://sticnuru.sirv.com/go-native-images/roberto-nickson-_em5tYXuOQc-unsplash.jpg"
+            title="Gotham Oracle"
+            description='A digital guide for NYC experiences.'
+            projLink="https://apps.apple.com/us/app/gotham-oracle/id1617227132"
+          />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Projects;

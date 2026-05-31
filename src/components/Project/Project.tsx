@@ -1,149 +1,126 @@
-import React, { useEffect, useRef } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import styled, { useTheme } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 import { Card, Button } from '@mantine/core';
 import { techLists } from './techLists';
 import { useViewportSize } from '@mantine/hooks';
 
-const styles = makeStyles({
-    regText: {
-        color: 'white',
-        fontWeight: 'normal',
-        fontSize: '19px',
-    },
-
-    root: {
-        width: 400,
-        backgroundColor: '#36454f',
-    },
-
-    media: {
-        height: 280,
-    },
-
-    title: {
-        color: '#fff',
-    },
-
-    description: {
-        fontSize: '12px',
-        color: '#fff',
-    },
-
-    btnTxt: {
-        fontSize: '10px',
-        color: '#fff',
-    },
-
-    cardContent: {
-        textAlign: 'left',
-    },
-});
-
 interface ProjectProps {
-    imgLink: string;
-    title: string;
-    description: JSX.Element | string;
-    projLink: string;
+  imgLink: string;
+  title: string;
+  description: JSX.Element | string;
+  projLink: string;
 }
 
 const Project = ({ imgLink, title, description, projLink }: ProjectProps) => {
-    const styleProps = useRef<{ width: number } | null>(null);
+  const { width } = useViewportSize();
 
-    const theme = useTheme();
-    const { width } = useViewportSize();
-
-    useEffect(() => {
-        styleProps.current = { width: window.screen.width <= 480 ? 350 : 400 };
-    }, []);
-
-    return (
-        <Card
-            style={{
-                backgroundColor: '#000000',
-                width: width >= 425 ? 400 : 350,
-                minHeight: '520px',
-            }}
+  return (
+    <Card
+      style={{
+        background: 'rgba(12, 18, 31, 0.55)',
+        backdropFilter: 'blur(12px)',
+        width: width >= 425 ? 400 : 350,
+        height: width >= 425 ? 560 : 540,
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        borderRadius: '20px',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      <Card.Section>
+        <img
+          src={imgLink}
+          alt={`${title} preview`}
+          style={{ width: '100%', height: 190, objectFit: 'cover' }}
+        />
+      </Card.Section>
+      <Card.Section
+        p="md"
+        style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.14)' }}
+      >
+        <ProjTitle>{title}</ProjTitle>
+        <ProjDesc>{description}</ProjDesc>
+      </Card.Section>
+      <Card.Section
+        p="md"
+        style={{
+          borderBottom: '1px solid rgba(255, 255, 255, 0.14)',
+          flex: 1,
+        }}
+      >
+        <TechTitle>Technologies</TechTitle>
+        <TechList>
+          {techLists[title].map((item) => (
+            <TechItem key={`${title}-${item.name}`}>
+              {item.icon}
+              {item.name}
+            </TechItem>
+          ))}
+        </TechList>
+      </Card.Section>
+      <Card.Section
+        p="md"
+        style={{ display: 'flex', justifyContent: 'center', marginTop: 'auto' }}
+      >
+        <Button
+          component="a"
+          href={projLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="filled"
+          style={{ background: '#2F5FA8' }}
+          fullWidth
+          radius="md"
         >
-            <Card.Section>
-                <img
-                    src={imgLink}
-                    alt="solhub image"
-                    style={{ width: '100%', height: 180 }}
-                />
-            </Card.Section>
-            <Card.Section
-                p="md"
-                style={{ borderBottom: `0.9px solid ${theme.pallete.dark3}` }}
-            >
-                <ProjTitle>{title}</ProjTitle>
-                <ProjDesc>{description}</ProjDesc>
-            </Card.Section>
-            <Card.Section
-                p="md"
-                style={{ borderBottom: `0.9px solid ${theme.pallete.dark3}` }}
-            >
-                <TechTitle>Technologies</TechTitle>
-                <TechList>
-                    {techLists[title].map((item) => (
-                        <TechItem>
-                            {item.icon}
-                            {item.name}
-                        </TechItem>
-                    ))}
-                </TechList>
-            </Card.Section>
-            <Card.Section
-                p="md"
-                style={{ display: 'flex', justifyContent: 'center' }}
-            >
-                <Button
-                    component="a"
-                    href={projLink}
-                    target="_blank"
-                    variant="gradient"
-                    fullWidth
-                    pos="absolute"
-                    bottom={14}
-                    w="90%"
-                >
-                    View
-                </Button>
-            </Card.Section>
-        </Card>
-    );
+          View
+        </Button>
+      </Card.Section>
+    </Card>
+  );
 };
 
 const ProjTitle = styled.h2`
-    font-size: 1rem;
+  font-size: 1.05rem;
+  margin: 0 0 0.5rem;
+  letter-spacing: 0.01em;
 `;
 
 const ProjDesc = styled.div`
-    font-size: 0.8rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: rgba(236, 239, 247, 0.85);
 `;
 
 const TechTitle = styled.h6`
-    font-size: 0.8rem;
-    margin: 0;
-    color: ${(props) => props.theme.pallete.dark3};
-    margin-bottom: 6px;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0;
+  color: rgba(159, 214, 255, 0.9);
+  margin-bottom: 6px;
 `;
 
 const TechList = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 `;
 
 const TechItem = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: rgba(236, 239, 247, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  background: rgba(255, 255, 255, 0.06);
 `;
 
 export default Project;
