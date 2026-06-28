@@ -13,8 +13,7 @@ declare module 'styled-components' {
             projectsSurfaceEnd: string;
             projectsAccentLink: string;
             projectsAccentLinkHover: string;
-            projectsButtonFrom: string;
-            projectsButtonTo: string;
+            projectsButtonAccent: string;
         };
     }
 }
